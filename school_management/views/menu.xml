@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <menuitem id="menu_school_root"
+        name="School"
+        sequence="0"/>
+
+    <menuitem id="menu_school_students"
+        name="students"
+        sequence="0"
+        parent="menu_school_root"
+        action="action_school_student"/>
+
+</odoo>

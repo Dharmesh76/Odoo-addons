@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <record id="hotel_booking_view_tree" model="ir.ui.view">
+        <field name="name">hotel.booking.view.tree</field>
+        <field name="model">hotel.booking</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="booking_ref"/>
+                <field name="partner_id"/>
+                <field name="checkin_date_time"/>
+                <field name="checkout_date_time"/>
+                <field name="sale_order_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hotel_booking_view_form" model="ir.ui.view">
+        <field name="name">hotel.booking.view.form</field>
+        <field name="model">hotel.booking</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="is_sale_order_created" invisible="1"/>
+                    <button string="Create Sale Order" name="action_create_sale_order" type="object"
+                            class="oe_highlight" invisible="is_sale_order_created"/>
+                    <button string="Add Order Line" name="%(action_order_line_wizard)d" type="action"
+                            class="oe_highlight" invisible="not is_sale_order_created"/>
+
+                </header>
+                <sheet>
+                    <div>
+                        <h1>
+                            <field name="booking_ref" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="partner_id"/>
+                            <field name="date"/>
+                            <field name="checkin_date_time"/>
+                            <field name="checkout_date_time"/>
+                            <field name="user_id" widget="many2one_avatar_user"/>
+                        </group>
+                        <group>
+                            <field name="sale_order_id" readonly="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Product Lines">
+                            <field name="product_line_ids">
+                                <tree editable="bottom">
+                                    <field name="currency_id" column_invisible="True"/>
+                                    <field name="product_id"/>
+                                    <field name="product_qty"/>
+                                    <field name="price_unit" widget="monetary"
+                                    />
+                                    <field name="tax_ids" widget="many2many_tags"/>
+                                    <field name="subtotal"/>
+                                    <button name="action_edit_record" string="Edit" type="object" class="btn btn-primary"/>
+                                </tree>
+                            </field>
+                            <group name="note_group" col="6" class="mt-2 mt-md-0">
+                                <group colspan="4">;
+
+                                </group>
+                                <group class="oe_subtotal_footer" colspan="2" name="sale_total">
+                                    <field name="untaxed_amount"
+                                           colspan="2"
+                                           readonly="1"/>
+                                    <field name="taxed_amount"  colspan="2" readonly="1" />
+                                    <field name="total_amount"  colspan="2" readonly="1"/>
+                                </group>
+                                <div class="clearfix"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_hotel_booking" model="ir.actions.act_window">
+        <field name="name">Bookings</field>
+        <field name="view_mode">tree,form</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hotel.booking</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_noncontent_smiling_face">
+                Create Your First Booking
+            </p>
+        </field>
+    </record>
+</odoo>

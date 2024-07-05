@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <record id="todo_list_view_tree" model="ir.ui.view">
+        <field name="name">todo.list.view.tree</field>
+        <field name="model">owl.todo.list</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="color" widget="color_picker"/>
+                <field name="is_completed" widget="boolean_toggle"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="todo_list_view{_form" model="ir.ui.view">
+        <field name="name">todo.list.view.form</field>
+        <field name="model">owl.todo.list</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="color" widget="color_picker"/>
+                            <field name="is_completed" widget="boolean_toggle"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_todo_list" model="ir.actions.act_window">
+        <field name="name">Todo</field>
+        <field name="res_model">owl.todo.list</field>
+        <field name="view_mode">tree,form</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_noncontent_smiling_face">
+                Create Your First Task
+            </p>
+        </field>
+    </record>
+
+    <record id="action_todo_list_owl" model="ir.actions.client">
+        <field name="name">Todo List Owl</field>
+        <field name="tag">owl.action_todo_list_js</field>
+    </record>
+
+    <menuitem id="todo_list_root"
+              sequence="20"
+              name="Todo List"/>
+    <menuitem id="todo_list_sub"
+              name="My Task"
+              sequence="0"
+              parent="todo_list_root"
+              action="action_todo_list"/>
+
+    <menuitem id="owl_todo_list_menu"
+              name="Owl Todo"
+              parent="todoo_list_root"
+              sequence="1"/>
+
+    <menuitem id="owl_todo_list"
+              name="todo List"
+              parent="owl_todo_list_menu"
+              sequence="0"
+              action="action_todo_list_owl"/>
+
+</odoo>

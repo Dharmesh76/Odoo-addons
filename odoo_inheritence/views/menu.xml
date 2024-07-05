@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem id="hotel_booking_menu_root1"
+              name="Trail"
+              sequence="0"/>
+
+
+    <menuitem id="hotel_booking_menu_product1"
+              name="Cat"
+              parent="hotel_booking_menu_root1"
+              sequence="0"
+              action="action_hotel_product1"/>
+
+    <menuitem id="hotel_booking_menu_product2"
+              name="field"
+              parent="hotel_booking_menu_root1"
+              sequence="1"
+              action="action_hotel_product2"/>
+</odoo>

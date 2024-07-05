@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <menuitem id="hotel_booking_menu_root"
+              name="Hotel Booking"
+              sequence="0"/>
+
+    <menuitem id="hotel_booking_menu_booking"
+              name="Booking"
+              sequence="0"
+              parent="hotel_booking_menu_root"
+              action="action_hotel_booking"/>
+
+    <menuitem id="hotel_booking_product"
+              name="Products"
+              sequence="1"
+              parent="hotel_booking_menu_root"
+              action="action_hotel_product"/>
+</odoo>

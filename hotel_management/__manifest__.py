@@ -1,0 +1,15 @@
+{
+    'name': 'Hotel Management',
+    'version': '1.1.0',
+    'catagory': 'Hotel Management',
+    'summery': 'Hotel Management',
+    'Description': 'Hotel Management',
+    'depends':[],
+    'data':[],
+    'demo':[],
+    'installable':True,
+    'auto_install':False,
+    'assets':{},
+    'sequence':'-100',
+    'application':True,
+}
